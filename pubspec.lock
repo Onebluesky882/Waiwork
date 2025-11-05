@@ -512,6 +512,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.3"
+  zard:
+    dependency: "direct main"
+    description:
+      name: zard
+      sha256: "772fc9ef6088123fefaaa88cb986253f0e838aec2af2c3b956a9a1c98ea2b049"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.23"
 sdks:
   dart: ">=3.8.0 <4.0.0"
   flutter: ">=3.18.0-18.0.pre.54"

@@ -5,6 +5,7 @@ import 'package:flutter_projects/features/home/widgets/demo_global_state.dart';
 import 'package:flutter_projects/features/home/widgets/footer_mobile.dart';
 import 'package:flutter_projects/features/home/widgets/homepage_section.dart';
 import 'package:flutter_projects/features/home/widgets/right_menu.dart';
+import 'package:flutter_projects/features/home/widgets/user_field.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Homepage extends ConsumerWidget {
@@ -37,6 +38,7 @@ class Homepage extends ConsumerWidget {
         children: [
           SectionOne(),
           Text(text),
+          ProfilePage(),
           GlobalState(onChanged: (_) => notifier.setText('wi ')),
         ],
       ),
