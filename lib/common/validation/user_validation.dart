@@ -39,7 +39,6 @@ class UserValidator {
     if (result.success) {
       return null; // no errors
     } else {
-      // แปลง issues เป็น Map<String,String?>
       final errors = {
         for (final e in result.error!.issues)
           if (e.path != null) e.path!: e.message,
