@@ -7,9 +7,9 @@
 
 # StatefulWidget StatelessWidget— เรียนรู้การจัดการ state ภายใน widget ✅
 
-State management — เช่น Provider, Riverpod, หรือ Bloc
+# State management — เช่น Provider, Riverpod, หรือ Bloc
 
-## Layout system — ใช้ Row, Column, Stack, Expanded, Flexible อย่างคล่อง
+## Layout system — ใช้ Row, Column, Stack, Expanded, Flexible อย่างคล่อง ✅
 
 - Expanded พื้่นที่ว่าง ใช้ ขยาย widget ให้กิน “พื้นที่ว่างที่เหลือทั้งหมด”
 
