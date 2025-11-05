@@ -1,21 +1,19 @@
-/* void main() {
-  runApp(
-    const ProviderScope(
-      child: MaterialApp(home: StateParent()),
-    ),
-  );
-} */
-
-import 'package:flutter/material.dart';
+// สร้าง provider
 import 'package:flutter_riverpod/legacy.dart';
 
+// 1️⃣ provider
 final textProvider = StateProvider<String>((ref) => '');
 
-class GlobalState extends StatelessWidget {
-  const GlobalState({super.key});
+class CustomState extends StateNotifier<String> {
+  CustomState() : super('');
 
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
+  // getter
+  String get text => state;
+
+  // setter
+  void setText(String value) => state = value;
 }
+
+final customStateProvider = StateNotifierProvider<CustomState, String>(
+  (ref) => CustomState(),
+);

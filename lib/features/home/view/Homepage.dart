@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/common/constants/colors.dart';
+import 'package:flutter_projects/features/home/controllers/riverpod.dart';
+import 'package:flutter_projects/features/home/widgets/demo_global_state.dart';
 import 'package:flutter_projects/features/home/widgets/footer_mobile.dart';
 import 'package:flutter_projects/features/home/widgets/homepage_section.dart';
 import 'package:flutter_projects/features/home/widgets/right_menu.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends ConsumerWidget {
   const Homepage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final text = ref.watch(customStateProvider);
+    final notifier = ref.read(customStateProvider.notifier);
+
+    debugPrint('text : $text');
     return Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
@@ -26,7 +33,14 @@ class Homepage extends StatelessWidget {
         actions: const [RightMenu()],
       ),
 
-      body: Stack(children: const [SectionOne(), FooterMobile()]),
+      body: Column(
+        children: [
+          SectionOne(),
+          Text(text),
+          GlobalState(onChanged: (_) => notifier.setText('wi ')),
+        ],
+      ),
+      bottomNavigationBar: FooterMobile(),
     );
   }
 }
