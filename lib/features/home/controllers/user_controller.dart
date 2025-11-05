@@ -1,13 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_projects/features/home/validation/validation.dart';
+import 'package:flutter_projects/common/validation/user_validation.dart';
+import 'package:flutter_projects/features/home/type/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-typedef UserFormState = ({
-  String name,
-  String age,
-  String phone,
-  Map<String, String?> errors,
-});
 
 class UserFormNotifier extends Notifier<UserFormState> {
   @override
@@ -23,13 +16,13 @@ class UserFormNotifier extends Notifier<UserFormState> {
   }
 
   bool validate() {
-    final result = userSchema.safeParse({
-      'name': state.name,
-      'age': state.age,
-      'phone': state.phone,
-    });
+    final errors = UserValidator.validate(
+      age: state.age,
+      name: state.name,
+      phone: state.phone,
+    );
 
-    if (result.success) {
+    if (errors == null) {
       state = (
         name: state.name,
         age: state.age,
@@ -39,10 +32,12 @@ class UserFormNotifier extends Notifier<UserFormState> {
 
       return true;
     } else {
-      final errors = {for (final e in result.error!.issues) e.path: e.message};
-
-      debugPrint('❌ Errors: $errors');
-
+      state = (
+        name: state.name,
+        age: state.age,
+        phone: state.phone,
+        errors: errors,
+      );
       return false;
     }
   }
