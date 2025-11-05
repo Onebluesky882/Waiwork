@@ -1,5 +1,6 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_projects/common/widgets/custom_border.dart';
 import 'package:flutter_projects/features/home/controllers/parent_child.dart';
 import 'package:flutter_projects/features/home/widgets/right_menu.dart';
 
@@ -11,9 +12,9 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Column(
+        title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Text('WorkDee', style: TextStyle(fontWeight: FontWeight.normal)),
           ],
         ),
@@ -21,16 +22,15 @@ class Homepage extends StatelessWidget {
         // Left side icon (leading)
         leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
 
-        //left
-        actions: [RightMenu()],
+        // Right menu
+        actions: const [RightMenu()],
       ),
 
-      body: Column(
+      body: Stack(
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(color: Colors.grey),
-
+            decoration: BoxDecoration(color: Colors.grey[200]),
             child: Column(
               children: [
                 Row(
@@ -60,41 +60,72 @@ class Homepage extends StatelessWidget {
                     ),
                   ],
                 ),
+                const StateParent(),
               ],
             ),
           ),
-          StateParent(),
+          Positioned(
+            left: 28,
+            right: 28,
+            bottom:
+                MediaQuery.of(context).padding.bottom - 16, // ✅ ปลอดภัยจากขอบจอ
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(
+                      255,
+                      126,
+                      203,
+                      255,
+                    ).withValues(alpha: 0.5),
+                    border: Border.all(
+                      color: Colors.white.withValues(alpha: 0.3),
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 4,
+                    horizontal: 20,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.home,
+                          color: Colors.white,
+                          size: 28,
+                        ),
+                        onPressed: () => print('Home pressed'),
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.favorite,
+                          color: Colors.white,
+                          size: 28,
+                        ),
+                        onPressed: () => print('Favorite pressed'),
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                          size: 28,
+                        ),
+                        onPressed: () => print('Settings pressed'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
-      ),
-      bottomNavigationBar: CusTomBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(24),
-          topRight: Radius.circular(24),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24),
-            topRight: Radius.circular(24),
-          ),
-          child: BottomAppBar(
-            color: Theme.of(context).colorScheme.surface,
-
-            height: 48,
-            child: Row(
-              children: [
-                IconButton(icon: const Icon(Icons.home), onPressed: () {}),
-                IconButton(icon: const Icon(Icons.favorite), onPressed: () {}),
-                IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }
 }
-
-/* 
-
-
- */
