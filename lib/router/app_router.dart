@@ -12,17 +12,25 @@ final appRouter = GoRouter(
       pageBuilder: (context, state) => CustomTransitionPage(
         key: state.pageKey,
         child: const Homepage(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          final offsetAnimation =
-              Tween<Offset>(
-                begin: const Offset(0, 1), // จากล่างขึ้นบน
-                end: Offset.zero,
-              ).animate(
-                CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
-              );
-          return SlideTransition(position: offsetAnimation, child: child);
-        },
+        transitionsBuilder: slide,
+        transitionDuration: const Duration(milliseconds: 800),
       ),
     ),
   ],
 );
+
+Widget slide(context, animation, secondaryAnimation, child) {
+  final curvedAnimation = CurvedAnimation(
+    parent: animation,
+    curve: Curves.easeInOutQuart, // ใช้ curve ที่นุ่มและเป็นธรรมชาติ
+  );
+
+  final offsetAnimation = Tween<Offset>(
+    begin: const Offset(0, 0.25), // เลื่อนขึ้นจากล่างเล็กน้อย (ไม่กระโดด)
+    end: Offset.zero,
+  ).animate(curvedAnimation);
+  return FadeTransition(
+    opacity: curvedAnimation,
+    child: SlideTransition(position: offsetAnimation, child: child),
+  );
+}
