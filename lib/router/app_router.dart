@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/features/home/page/Homepage.dart';
-import 'package:flutter_projects/features/intro.dart';
+import 'package:flutter_projects/features/splash.dart';
 import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
@@ -19,6 +19,7 @@ final appRouter = GoRouter(
   ],
 );
 
+// animation
 Widget slide(context, animation, secondaryAnimation, child) {
   final curvedAnimation = CurvedAnimation(
     parent: animation,

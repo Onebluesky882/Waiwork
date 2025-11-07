@@ -31,11 +31,13 @@ class _SplashState extends State<Splash> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AnimatedTextLine(text: 'hello', delay: Duration(milliseconds: 0)),
-            AnimatedTextLine(text: 'what', delay: Duration(milliseconds: 300)),
-            AnimatedTextLine(text: 'is', delay: Duration(milliseconds: 600)),
+            AnimatedTextLine(text: 'WorkDee', delay: Duration(milliseconds: 0)),
             AnimatedTextLine(
-              text: 'your name ?',
+              text: "เลือกคนที่ใช่",
+              delay: Duration(milliseconds: 600),
+            ),
+            AnimatedTextLine(
+              text: 'การเงินปลอดภัย มั่นใจในระบบ',
               delay: Duration(milliseconds: 900),
             ),
           ],
@@ -44,6 +46,8 @@ class _SplashState extends State<Splash> {
     );
   }
 }
+
+// AnimatedTextLine
 
 class AnimatedTextLine extends StatefulWidget {
   final String text;

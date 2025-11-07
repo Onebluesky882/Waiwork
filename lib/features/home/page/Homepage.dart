@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projects/common/constants/images.dart';
 import 'package:flutter_projects/common/layouts/main.layout.dart';
 
 class Homepage extends StatelessWidget {
@@ -17,7 +18,7 @@ class Homepage extends StatelessWidget {
               ),
               height: 300,
               alignment: Alignment.center,
-              child: const Text('Box 1 - height 300'),
+              child: Image.asset(AppImages.picTwo, fit: BoxFit.cover),
             ),
             SizedBox(width: 8), // ช่องว่างระหว่างกล่อง
             Container(
@@ -26,7 +27,7 @@ class Homepage extends StatelessWidget {
               ),
               height: 300,
               alignment: Alignment.center,
-              child: const Text('Box  '),
+              child: Image.asset(AppImages.picOne, fit: BoxFit.cover),
             ),
           ],
         ),

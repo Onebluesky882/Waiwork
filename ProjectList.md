@@ -5,7 +5,7 @@
 - [x] project structure
 - [x] set Theme
 - [x] set Assets & Fonts
-- [] Splash Page
+- [x] Splash Page
 
 - []Get Started Page
 - [] Choose Mode Page
