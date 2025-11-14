@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projects/features/Started.dart';
+import 'package:flutter_projects/features/home/page/home_page.dart';
 import 'package:flutter_projects/features/splash.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,18 +7,18 @@ final appRouter = GoRouter(
   initialLocation: '/splash',
   routes: [
     GoRoute(path: '/splash', builder: (context, state) => const Splash()),
+
     GoRoute(
       path: '/',
       pageBuilder: (context, state) => CustomTransitionPage(
         key: state.pageKey,
-        child: const Started(),
+        child: const Homepage(),
         transitionsBuilder: slide,
         transitionDuration: const Duration(milliseconds: 800),
       ),
     ),
   ],
 );
-
 // animation
 Widget slide(context, animation, secondaryAnimation, child) {
   final curvedAnimation = CurvedAnimation(

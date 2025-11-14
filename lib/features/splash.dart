@@ -18,7 +18,7 @@ class _SplashState extends State<Splash> {
     // รอ 3 วินาที แล้วเปลี่ยนหน้า
     Future.delayed(const Duration(seconds: 3), () {
       if (mounted) {
-        context.go('/'); // <-- ใช้ go_router navigation
+        context.go('/');
       }
     });
   }
@@ -29,16 +29,18 @@ class _SplashState extends State<Splash> {
       backgroundColor: AppColors.primary,
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: .center,
           children: [
             AnimatedTextLine(text: 'WorkDee', delay: Duration(milliseconds: 0)),
             AnimatedTextLine(
               text: "เลือกคนที่ใช่",
               delay: Duration(milliseconds: 600),
             ),
-            AnimatedTextLine(
-              text: 'การเงินปลอดภัย มั่นใจในระบบ',
-              delay: Duration(milliseconds: 900),
+            Center(
+              child: AnimatedTextLine(
+                text: 'การเงินปลอดภัย มั่นใจในระบบ',
+                delay: Duration(milliseconds: 900),
+              ),
             ),
           ],
         ),
