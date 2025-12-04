@@ -4,5 +4,5 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'app_router.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(child: AppRouter()));
 }

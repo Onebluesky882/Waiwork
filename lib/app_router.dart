@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projects/common/constants/theme.dart';
-import 'package:flutter_projects/employer_main/feature/add_job/post-job.dart';
+import 'package:flutter_projects/employer/add_job/post-job.dart';
 import 'package:flutter_projects/features/home/page/home_page.dart';
 import 'package:go_router/go_router.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AppRouter extends StatelessWidget {
+  const AppRouter({super.key});
 
   @override
   Widget build(BuildContext context) {
