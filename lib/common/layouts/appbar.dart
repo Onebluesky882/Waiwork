@@ -11,7 +11,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('WorkDee', style: TextStyle(fontWeight: FontWeight.normal)),
+          Text('WaiWork', style: TextStyle(fontWeight: FontWeight.normal)),
         ],
       ),
 
