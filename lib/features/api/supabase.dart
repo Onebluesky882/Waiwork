@@ -26,7 +26,7 @@ void showAddNewNoteDialog({
             await onSaved();
 
             if (dialogContext.mounted) {
-              Navigator.pop(dialogContext); // <-- ใช้ dialogContext
+              Navigator.pop(dialogContext);
             }
             textController.clear();
           },

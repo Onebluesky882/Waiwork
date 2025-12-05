@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_projects/common/constants/theme.dart';
 import 'package:flutter_projects/common/layouts/app_bar.dart';
 import 'package:flutter_projects/common/layouts/footer.dart';
-import 'package:flutter_projects/employee/job-board/job-board.dart';
+import 'package:flutter_projects/presentation/employee/job-board/job-board.dart';
 import 'package:flutter_projects/homepage.dart';
 import 'package:go_router/go_router.dart';
 

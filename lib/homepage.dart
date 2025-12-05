@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projects/api/supabase.dart';
+import 'package:flutter_projects/features/api/supabase.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
