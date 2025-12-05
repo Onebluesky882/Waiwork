@@ -43,7 +43,7 @@ GoRouter _router(AuthRepo authRepo) => GoRouter(
       routes: [
         GoRoute(path: '/', builder: (context, state) => Homepage()),
         GoRoute(
-          path: '/lib/presentation/auth/signup.dart',
+          path: '/signup',
           builder: (context, state) => SignupPage(authRepo: authRepo),
         ),
         GoRoute(path: '/job-board', builder: (context, state) => Board()),

@@ -19,9 +19,7 @@ class _SignupPageState extends State<SignupPage> {
   bool _isLoading = false;
 
   void _register() async {
-    // check form key
-
-    if (_formKey.currentState!.validate()) return;
+    if (!_formKey.currentState!.validate()) return;
     setState(() => _isLoading = true);
     try {
       final AppUser? user = await widget.authRepo.registerWithEmailPassword(
@@ -32,12 +30,13 @@ class _SignupPageState extends State<SignupPage> {
       if (user != null) {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(SnackBar(content: Text('Welcome $user.email')));
+        ).showSnackBar(SnackBar(content: Text('Welcome ${user.email}')));
       } else {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text('register fail')));
       }
+      logs.i('newUser : $user');
     } catch (e) {
       logs.e('signup failed : $e');
     } finally {
@@ -60,6 +59,7 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     // form must put key:_formKey global
+
     return Form(
       key: _formKey,
       child: Column(
@@ -70,6 +70,11 @@ class _SignupPageState extends State<SignupPage> {
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
               if (value == null || value.isEmpty) return 'enter mail';
+              // if (!RegExp(
+              //   r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+              // ).hasMatch(value)) {
+              //   return 'Enter a valid email';
+              // }
               if (!value.contains('@')) return 'missing @';
               return null;
             },
@@ -88,7 +93,10 @@ class _SignupPageState extends State<SignupPage> {
           const SizedBox(height: 2),
           _isLoading
               ? const CircularProgressIndicator()
-              : ElevatedButton(onPressed: _register, child: Text('Sign Up')),
+              : ElevatedButton(
+                  onPressed: _register,
+                  child: Text('Sign Up', style: TextStyle(color: Colors.white)),
+                ),
         ],
       ),
     );
