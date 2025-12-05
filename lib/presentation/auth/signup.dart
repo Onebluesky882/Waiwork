@@ -36,7 +36,11 @@ class _SignupPageState extends State<SignupPage> {
           context,
         ).showSnackBar(SnackBar(content: Text('register fail')));
       }
-      logs.i('newUser : $user');
+      if (user != null) {
+        _formKey.currentState!.reset();
+        _emailController.clear();
+        _passwordController.clear();
+      }
     } catch (e) {
       logs.e('signup failed : $e');
     } finally {
@@ -69,13 +73,10 @@ class _SignupPageState extends State<SignupPage> {
             decoration: InputDecoration(labelText: 'Email'),
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
-              if (value == null || value.isEmpty) return 'enter mail';
-              // if (!RegExp(
-              //   r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-              // ).hasMatch(value)) {
-              //   return 'Enter a valid email';
-              // }
-              if (!value.contains('@')) return 'missing @';
+              if (value == null || value.isEmpty) return 'Enter email';
+              if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(value)) {
+                return 'Enter a valid email';
+              }
               return null;
             },
           ),
@@ -84,6 +85,7 @@ class _SignupPageState extends State<SignupPage> {
             controller: _passwordController,
             decoration: InputDecoration(labelText: 'password'),
             keyboardType: TextInputType.visiblePassword,
+            obscureText: true,
             validator: (value) {
               if (value == null || value.isEmpty) return 'enter password';
               if (value.length <= 6) return 'minimum 6 characters';
